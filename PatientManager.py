@@ -31,7 +31,7 @@ class PatientManager:
                     name = raw_patient_data[1],
                     disease = raw_patient_data[2],
                     gender = raw_patient_data[3],
-                    age = raw_patient_data[4],
+                    age = int(raw_patient_data[4]),
                 )
 
                 self.patients.append(patient)
@@ -134,8 +134,11 @@ class PatientManager:
     def write_list_of_patients_to_file(self):
         with open('./Project Data/patients.txt', 'w') as f:
             f.write("id_Name_Disease_Gender_Age"+"\n")
-            for patient in self.patients:
-                f.write(patient.__str__())
+            for i in range(len(self.patients)):
+                patient = self.patients[i]
+                is_last = i == (len(self.patients) - 1)
+                line_terminator = "" if is_last else "\n"
+                f.write(patient.__str__() + line_terminator)
 
     def add_patient_to_file(self):
         '''
