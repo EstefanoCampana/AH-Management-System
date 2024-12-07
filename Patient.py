@@ -68,7 +68,7 @@ class Patient:
         '''
         Sets patient\'s gender
 
-        new_gender - Patient's new age
+        new_gender - Patient's new gender
         '''
         self.gender = new_gender
 
