@@ -49,7 +49,7 @@ class DoctorManager:
         list_name = []
         dic_doctors = {}
         objects_doc = []
-        with open("doctors.txt" ,"r") as d:
+        with open("doctors.txt" ,"r") as d: #missing folder path
             for line in d:
                 d2 = line.rstrip()
                 d3 = d2.replace(" ","")
@@ -154,7 +154,7 @@ class DoctorManager:
 
 #Write to file
     def write_list_of_doctors_to_file():
-        with open("doctors.txt","w") as w:
+        with open("doctors.txt","w") as w: #missing folder path
             for line in objects_doc:
                 w.write(DoctorManager.format_doc_info(line))
                 w.write("\n")
@@ -360,12 +360,14 @@ class PatientManager:
 
         print(f"\nPatient whose ID is {new_patient["id"]} has been added.\n")
 
-
+#main managment function
 class Managment:
     def display_menu():
         while True:
-            print("\nWelcome to Alberta Health Services (AHS) Hospital Managment system\nSelect from the following options, or select 3 to stop: \n ")
+            print("\nWelcome to Alberta Hospital (AH) Managment system\nSelect from the following options, or select 3 to stop: \n ")
             main_menu = input("1 - Doctors\n2 - Patients\n3 - Exit Program\n>>> ")
+            #nested while loops to keep the menu up each input
+            #when invalid entry put in program simply ignores and keeps running
             if main_menu == "1":
                 while True:
                     DoctorManager.constructor()
